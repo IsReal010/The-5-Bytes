@@ -11,7 +11,7 @@
       <nav class="navbar">
         <div class="navbar-container">
           <div id="arrow-back" class="navbar-arrow-back">&larr;</div>
-
+          
           <div class="navbar-title">
             <h2>TaskMaster</h2>
           </div>
@@ -28,27 +28,35 @@
         <ul id="task-list" class="centered-container"></ul>
         <button id="button-add" class="button-add animation-expand">+</button>
       </section>
-
+      <!-- Section for creating/editing task entries -->
       <section class="section-add-edit">
+        <!-- Title for creating a new task entry -->
         <h2 class="centered-title form-create-mode">Create a New Entry</h2>
+        <!-- Title for editing an existing task entry -->
         <h2 class="centered-title form-edit-mode">Edit The Entry</h2>
-
+        <!-- Form for creating/editing task entries -->
         <div class="centered-container">
           <form id="form">
+            <!-- Hidden input to store the unique identifier of task when editing -->
             <input id="task-id" type="hidden" />
 
+            <!-- Input field for task name -->
             <div class="form-group">
               <label for="task-name" class="form-label">Entry Name</label>
               <input id="task-name" type="text" class="input-text" />
+              <!-- Error message for task name validation -->
               <div id="input-error-name" class="input-error">Write a name.</div>
             </div>
 
+            <!-- Input fields for specifying task deadline (day, month, and year) -->
             <div class="form-group">
-              <label for="task-deadline" class="form-label">Deadline</label>
+              <label for="task-deadline" class="form-label">Due Date</label>
 
+              <!-- Select element for choosing the day of the task deadline -->
               <div class="select-date-group">
                 <select id="task-day" class="input-text select-date"></select>
 
+                <!-- Select element for choosing the month of the task deadline -->
                 <select
                   id="task-month"
                   class="input-text select-date select-month"
@@ -68,27 +76,39 @@
                   <option value="12">December</option>
                 </select>
 
+                <!-- Select element for choosing the year of the task deadline -->
                 <select id="task-year" class="input-text select-date"></select>
 
+                 <!-- Error message for task deadline validation -->
                 <div id="input-error-deadline" class="input-error">
                   Select a valid date.
                 </div>
               </div>
             </div>
 
+            <!-- Textarea for providing the task description -->
             <div class="form-group">
               <label for="task-description" class="form-label"
-                >Description</label
+                >Notes</label
               >
               <textarea
                 id="task-description"
                 class="input-text input-textarea"
               ></textarea>
+              <!-- Error message for task description validation -->
               <div id="input-error-description" class="input-error">
                 Write a description.
               </div>
             </div>
 
+            <div class="form-inline doc-upload-wrapper">
+              <div class="form-group">
+                <input type="file" class="form-control" id="document_id" placeholder="Document Name" name="name" accept="file_extension"/>
+              </div>
+              <button type="submit" class="btn btn-default btn-attach-other">Attach another file</button>
+            </div>
+
+            <!-- Select element for choosing the task priority -->
             <div class="form-group">
               <label for="task-priority" class="form-label">Priority</label>
 
@@ -99,11 +119,13 @@
                 <option value="High">High</option>
               </select>
 
+              <!-- Error message for task priority validation -->
               <div id="input-error-priority" class="input-error">
                 Select a priority.
               </div>
             </div>
 
+            <!-- Button for creating a new task entry -->
             <div class="button-group crud-buttons">
               <button
                 id="button-create"
