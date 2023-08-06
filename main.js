@@ -65,6 +65,30 @@ $("#task-list").on("click", ".task", function() {
   displayAddEditSection();
 });
 
+task_manager_app.controller('ctrl_task', function ($scope, $http){
+	$http.get("task.json").then(function (response) {
+      		$scope.task = response.data.tasks;
+  	});
+
+  	$scope.sort_options = ['title', '-task_priority'];
+  	$scope.filter_options = ['High', 'Low', 'Normal'];
+           $scope.add = function(){
+	      	// var date = new Date();
+	       //     $scope.ddMMMMyyyy = $filter('date')(new Date(), 'dd, MMMM yyyy');
+	       	$scope.created_at = new Date();
+	       	$scope.task.push({ title: $scope.title, description: $scope.description, created_at: $scope.created_at, task_priority : $scope.task_priority });
+		$scope.title = '';
+		$scope.description = '';
+		$scope.created_at ='';
+		$scope.task_priority = '';
+
+	        	setTimeout(function(){
+		  	$('.overlay').removeClass('active');
+			$('.pop-up').hide();
+	  	},1500)
+        	}
+})
+
 
 //Functions
 
@@ -301,7 +325,6 @@ function loadYearOptions(currentYear) {
     $("#task-year").append(`<option value="${i}" ${selected}>${i}</option>`);
   }
 }
-
 
 //Main
 
